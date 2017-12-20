@@ -1,6 +1,6 @@
 .idea
 resource_plugin/build
-.gradle
+# .gradle
 
 # Compiled class file
 *.class
