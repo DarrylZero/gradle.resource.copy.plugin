@@ -1,4 +1,5 @@
 .idea
+.gradle
 resource_plugin/build
 resource_plugin/out
 
