@@ -6,9 +6,11 @@ install: gradle assemble
 
 build: gradle build
 
-#deploy:
-#  - provider: script
-#    script: sh deploy.sh $repo_user $repo_password
+deploy:
+  - provider: script
+    script: sh deploy.sh $repo_password
+    on:
+       branch: master
 
 branches:
   only:
