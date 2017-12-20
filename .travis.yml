@@ -13,3 +13,4 @@ build: gradle build
 branches:
   only:
   - development
+  - feature/[A-Za-z]+
