@@ -1,3 +1,7 @@
+.idea
+resource_plugin/build
+.gradle
+
 # Compiled class file
 *.class
 

@@ -1,0 +1,4 @@
+//rootProject.name = 'json_compare'
+rootProject.name = 'gradle.resource.copy.plugin'
+include 'resource_plugin'
+
