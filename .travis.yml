@@ -12,5 +12,6 @@ build: gradle build
 
 branches:
   only:
+  - master
   - development
-  - feature/[A-Za-z]+
+  - /^feature.*$/
