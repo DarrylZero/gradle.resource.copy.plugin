@@ -15,3 +15,8 @@ buildscript {
 }
 
 apply plugin: 'com.steammachine.org.gradle.properties.plugins'
+
+
+When plugin is applied all files in the codebase that contain 'resource' in its path 
+are copied into target/classes directory.
+
