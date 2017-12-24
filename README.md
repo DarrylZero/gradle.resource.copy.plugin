@@ -20,7 +20,7 @@ buildscript {
 
 To enable plugin add line to your gradle script 
 ```groovy
-apply plugin: 'com.steammachine.org.gradle.properties.plugins'
+apply plugin: 'com.steammachine.org.gradle.copyresources.plugin'
 ```
 
 When plugin is applied all files in the codebase that contain 'resource' in its path 
