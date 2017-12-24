@@ -10,10 +10,11 @@ deploy:
   - provider: script
     script: sh deploy.sh $repo_password
     on:
-       branch: master
+       branch: /^release.*$/
 
 branches:
   only:
   - master
   - development
   - /^feature.*$/
+  - /^release.*$/

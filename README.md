@@ -23,7 +23,12 @@ To enable plugin add line to your gradle script
 apply plugin: 'com.steammachine.org.gradle.properties.plugins'
 ```
 
-
 When plugin is applied all files in the codebase that contain 'resource' in its path 
 are copied into target/classes directory.
+
+```text
+Actual built code of latest version can be retreived from
+
+https://clojars.org/com.steammachine.org/gradle.copy.plugin
+```
 
