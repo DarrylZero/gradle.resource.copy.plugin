@@ -5,6 +5,9 @@ import org.gradle.api.Project
 import org.gradle.api.Task
 import org.gradle.api.plugins.JavaBasePlugin
 import org.gradle.api.tasks.Copy
+import org.gradle.internal.impldep.org.apache.commons.collections.ClosureUtils
+import org.gradle.internal.impldep.org.sonatype.aether.util.ConfigUtils
+import org.gradle.util.ConfigureUtil
 
 import java.util.function.Consumer
 
@@ -55,14 +58,37 @@ class Resources {
         }
     }
 
-    Resources copy(String name, Consumer<Copy> consumer) {
+//    Resources copy(String name, Consumer<Copy> consumer) {
+//        Task task = project.tasks.findByName(name)
+//        if (task != null) {
+//            if (task instanceof Copy) {
+//                /* in this case we have a task  already defined in project */
+//                copies.add((task as Copy))
+//                (task as Copy).group = JavaBasePlugin.BUILD_TASK_NAME
+//                consumer.accept(task as Copy)
+//                (task as Copy).group = JavaBasePlugin.BUILD_TASK_NAME
+//
+//                return this;
+//            }
+//            throw new IllegalStateException("task with name $name is already defined and has different type $task.getClass().name")
+//        }
+//
+//        Copy copy = (Copy) project.tasks.create(type: Copy, name: name);
+//        copies.add(copy)
+//        copy.group = JavaBasePlugin.BUILD_TASK_NAME
+//        consumer.accept(copy)
+//        copy.group = JavaBasePlugin.BUILD_TASK_NAME
+//        this
+//    }
+
+    Resources copy(String name, Closure<Copy> closure) {
         Task task = project.tasks.findByName(name)
         if (task != null) {
             if (task instanceof Copy) {
-                /* В данном случае у нас задача, которая уже определена в проекте */
+                /* in this case we have a task  already defined in project */
                 copies.add((task as Copy))
                 (task as Copy).group = JavaBasePlugin.BUILD_TASK_NAME
-                consumer.accept(task as Copy)
+                closure.accept(task as Copy)
                 (task as Copy).group = JavaBasePlugin.BUILD_TASK_NAME
 
                 return this;
@@ -73,7 +99,7 @@ class Resources {
         Copy copy = (Copy) project.tasks.create(type: Copy, name: name);
         copies.add(copy)
         copy.group = JavaBasePlugin.BUILD_TASK_NAME
-        consumer.accept(copy)
+        ConfigureUtil.configure(closure, copy)
         copy.group = JavaBasePlugin.BUILD_TASK_NAME
         this
     }

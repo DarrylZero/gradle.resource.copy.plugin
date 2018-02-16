@@ -88,6 +88,18 @@ class ResourceCopyPluginTest {
     }
 
     @Test
+    void pluginCreation20() {
+        DefaultProject project = (DefaultProject) ProjectBuilder.builder().build();
+        project.getPlugins().apply(ResourceCopyPlugin.class);
+
+        project.defaultcopyresources {
+        }
+        project.defaultcopyresources {
+        }
+        project.evaluate()
+    }
+
+    @Test
     void creation() {
         new Resources(ProjectBuilder.builder().build());
     }
@@ -102,9 +114,7 @@ class ResourceCopyPluginTest {
 
             Assert.assertEquals('com.steammachine.org.gralde.plugins.resource.plugin.ResourceCopyPlugin',
                     properties.getProperty('implementation-class'))
-
         }
-
     }
 
 
